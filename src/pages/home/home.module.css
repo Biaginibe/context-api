@@ -1,0 +1,21 @@
+.wrapperContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 24px;
+}
+/* 
+.wrapperContent {
+  margin: auto 0;
+} */
+
+.wrapperItem {
+  height: 400px;
+  min-width: 300px;
+  background-color: black;
+}
+
+.wrapperAllItems {
+  max-width: 1000px;
+  justify-content: center;
+}
