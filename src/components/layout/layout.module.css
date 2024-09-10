@@ -1,0 +1,79 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--size-header);
+  width: 100%;
+  background-color: var(--color-primary);
+}
+
+.wrapperLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+}
+
+.txtLogo {
+  color: var(--color-secondary);
+  font-size: 40px;
+  line-height: 32px;
+  margin-bottom: 4px;
+  font-family: "Handjet", sans-serif;
+  font-weight: 600;
+}
+
+.shoppingCart {
+  color: var(--color-white);
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.wrapperContent {
+  padding: 0 48px;
+  min-height: calc(100vh - var(--size-header) - var(--size-footer));
+  background-color: var(--color-darker-gray);
+}
+
+.insideContent {
+  padding: 24px;
+  min-height: 380px;
+  border-radius: 8px;
+  background-color: var(--color-gray);
+  margin-block: 24px;
+  color: var(--color-txt-white);
+}
+
+.wrapperFooter {
+  background-color: #010326;
+  text-align: center;
+  color: var(--color-txt-white);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--size-footer);
+}
+
+.wrapperSocialMedia {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-white);
+}
+
+.socialMediaIcons {
+  font-size: 32px;
+  margin-right: 8px;
+}
+
+.socialMediaTxt {
+  font-family: "Handjet", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
