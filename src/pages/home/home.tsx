@@ -1,32 +1,46 @@
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import styles from "./home.module.css";
-
-// array com 15 itens
-const items = [
-  { key: "1", label: "Home" },
-  { key: "2", label: "Produtos" },
-  { key: "3", label: "Contato" },
-  { key: "4", label: "Sobre" },
-  { key: "5", label: "Login" },
-  { key: "6", label: "Carrinho" },
-  { key: "7", label: "Perfil" },
-  { key: "8", label: "Configurações" },
-  { key: "9", label: "Ajuda" },
-  { key: "10", label: "FAQ" },
-  { key: "11", label: "Termos de uso" },
-  { key: "12", label: "Política de privacidade" },
-  { key: "13", label: "Trocas e devoluções" },
-  { key: "14", label: "Pagamento e frete" },
-  { key: "15", label: "SAC" },
-];
+import { stock } from "../../utils/stock/stock.ts";
+import { StockItem } from "../../utils/stock/types.ts";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 export const Home: React.FC = () => {
   return (
     <div className={styles.wrapperContent}>
       <Row gutter={[16, 16]} className={styles.wrapperAllItems}>
-        {items.map((item) => (
-          <Col key={item.key} xs={24} sm={12} md={12} lg={8} xl={8}>
-            <div key={item.key} className={styles.wrapperItem}></div>
+        {stock.map((item: StockItem) => (
+          <Col key={item.id} xs={24} sm={12} md={12} lg={8} xl={8}>
+            <div className={styles.wrapperItem}>
+              <img
+                src={item.image}
+                alt={`Imagem do produto ${item.name}`}
+                title={item.name}
+                width={"100%"}
+              />
+
+              <h3 className={styles.itemTitle}>{item.name}</h3>
+
+              <p className={styles.description} title={item.description}>
+                {item.description}
+              </p>
+
+              <div className={styles.stockPrice}>
+                <p className={styles.price}>R$ {item.price}</p>
+                <p className={styles.divisor}> | </p>
+                <p className={styles.stockQuantity}>
+                  Estoque: {item.stockQuantity}
+                </p>
+              </div>
+
+              <Button
+                block
+                className={styles.addButton}
+                icon={<ShoppingCartOutlined />}
+                size="large"
+              >
+                Adicionar ao carrinho
+              </Button>
+            </div>
           </Col>
         ))}
       </Row>

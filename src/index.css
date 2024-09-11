@@ -1,11 +1,13 @@
 :root {
   --color-bg: #f5f5f5;
   --color-primary: #010326;
+  --color-primary2: #0c1171;
   --color-secondary: #f2055c;
   --color-black: #0d0d0d;
   --color-white: #ffffff;
   --color-darker-gray: #0c0c0b;
   --color-gray: #32322e;
+  --color-light-gray: #4c4c4c;
   --color-txt-white: #fff;
 
   --size-header: 4rem;
@@ -31,6 +33,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 /* a {

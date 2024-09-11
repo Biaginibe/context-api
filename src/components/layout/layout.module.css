@@ -33,17 +33,15 @@
 }
 
 .wrapperContent {
-  padding: 0 48px;
+  padding: 40px 0px;
   min-height: calc(100vh - var(--size-header) - var(--size-footer));
   background-color: var(--color-darker-gray);
 }
 
 .insideContent {
   padding: 24px;
-  min-height: 380px;
-  border-radius: 8px;
+  min-height: calc(100vh - var(--size-header) - var(--size-footer) - 96px);
   background-color: var(--color-gray);
-  margin-block: 24px;
   color: var(--color-txt-white);
 }
 
