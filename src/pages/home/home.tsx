@@ -12,6 +12,7 @@ export const Home: React.FC = () => {
           <Col key={item.id} xs={24} sm={12} md={12} lg={8} xl={8}>
             <div className={styles.wrapperItem}>
               <img
+                className={styles.image}
                 src={item.image}
                 alt={`Imagem do produto ${item.name}`}
                 title={item.name}

@@ -1,0 +1,48 @@
+.custom-modal .ant-modal-content {
+  background-color: var(--color-gray-4); /* Fundo do modal */
+  color: var(--color-white); /* Texto do modal */
+}
+
+.custom-modal .ant-modal-header {
+  background-color: transparent; /* Fundo do cabeçalho */
+  display: flex;
+  align-items: center;
+}
+
+.custom-modal .ant-modal-footer {
+  background-color: transparent; /* Fundo do rodapé */
+}
+
+.custom-modal .ant-modal-close-x {
+  color: var(--color-white); /* Cor do ícone de fechar */
+}
+
+/* Aplica o blur ao fundo do modal */
+.ant-modal-mask {
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.5); /* Mantém a cor semitransparente */
+}
+
+/* Customiza o cabeçalho do modal com flexbox */
+.custom-modal-header {
+  display: flex;
+  justify-content: center; /* Alinha o título ao centro */
+  align-items: center;
+  position: relative; /* Permite posicionamento absoluto para o botão de fechar */
+}
+
+/* Estiliza o título do modal */
+.custom-modal-title {
+  color: var(--color-white); /* Cor rosa */
+  font-size: 1.5rem; /* Tamanho da fonte */
+  font-weight: bold; /* Negrito */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Ajusta a posição do botão de fechar */
+.custom-modal .ant-modal-close {
+  position: absolute;
+  right: 16px; /* Espaçamento à direita */
+  top: 22px; /* Espaçamento ao topo */
+  color: var(--color-white); /* Cor do ícone de fechar */
+}

@@ -13,10 +13,14 @@
 .wrapperItem {
   min-height: 400px;
   min-width: 300px;
-  background-color: #262626;
+  background-color: var(--color-gray-3);
   padding: 24px;
   border-radius: 8px;
   margin-inline: 16px;
+}
+
+.image {
+  filter: invert(1);
 }
 
 .itemTitle {
@@ -28,7 +32,7 @@
   text-overflow: ellipsis;
   white-space: normal; /* Permite quebra de linha, mantendo controle */
   font-size: 20px;
-  color: #327ec9;
+  color: var(--color-blue-3);
   font-weight: 700;
 }
 
@@ -57,11 +61,11 @@
 
 .divisor {
   text-align: center;
-  color: var(--color-light-gray);
+  color: var(--color-gray-1);
 }
 
 .stockQuantity {
-  color: var(--color-light-gray);
+  color: var(--color-gray-1);
   font-weight: 700;
   text-align: right;
 }

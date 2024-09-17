@@ -1,4 +1,4 @@
-import { Layout } from "antd";
+import { Badge, Layout } from "antd";
 import styles from "./layout.module.css";
 import {
   GithubOutlined,
@@ -6,12 +6,17 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Logo2 } from "../../assets/illustrations.tsx";
+import { ShoppingCart } from "../shoppingCart/shoppingCart.tsx";
+import { useState } from "react";
+import { mockCartItems } from "../../utils/stock/mockCartItems.ts";
 
 const { Header, Content, Footer } = Layout;
 
 export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
+  const [isShoppingCartOpen, setIsShoppingCartOpen] = useState<boolean>(false);
+
   return (
     <Layout>
       <Header className={styles.header}>
@@ -20,7 +25,17 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
           <Logo2 className={styles.logo} />
           <span className={styles.txtLogo}>EleveNerd</span>
         </div>
-        <ShoppingCartOutlined className={styles.shoppingCart} />
+        <Badge
+          count={mockCartItems.reduce((acc, item) => acc + item.quantity, 0)}
+          color="var(--color-secondary)"
+          size="default"
+        >
+          <ShoppingCartOutlined
+            onClick={() => setIsShoppingCartOpen(true)}
+            className={styles.shoppingCart}
+          />
+        </Badge>
+
         {/* <Menu
           theme="dark"
           mode="horizontal"
@@ -58,6 +73,11 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
           <span className={styles.socialMediaTxt}>Linkedin</span>
         </a>
       </Footer>
+      <ShoppingCart
+        isModalOpen={isShoppingCartOpen}
+        handleOk={() => console.log("ok, confirmei compra")}
+        handleCancel={() => setIsShoppingCartOpen(false)}
+      />
     </Layout>
   );
 };

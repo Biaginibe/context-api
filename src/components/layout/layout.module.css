@@ -35,13 +35,13 @@
 .wrapperContent {
   padding: 40px 0px;
   min-height: calc(100vh - var(--size-header) - var(--size-footer));
-  background-color: var(--color-darker-gray);
+  background-color: var(--color-gray-5);
 }
 
 .insideContent {
   padding: 24px;
   min-height: calc(100vh - var(--size-header) - var(--size-footer) - 96px);
-  background-color: var(--color-gray);
+  background-color: var(--color-gray-2);
   color: var(--color-txt-white);
 }
 
