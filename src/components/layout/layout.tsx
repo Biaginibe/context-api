@@ -8,7 +8,7 @@ import {
 import { Logo2 } from "../../assets/illustrations.tsx";
 import { ShoppingCart } from "../shoppingCart/shoppingCart.tsx";
 import { useState } from "react";
-import { mockCartItems } from "../../utils/stock/mockCartItems.ts";
+import { useCart } from "../../hooks/useCart.tsx";
 
 const { Header, Content, Footer } = Layout;
 
@@ -16,6 +16,9 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
   const [isShoppingCartOpen, setIsShoppingCartOpen] = useState<boolean>(false);
+  const { cart } = useCart();
+
+  const toggleShoppingCart = () => setIsShoppingCartOpen(!isShoppingCartOpen);
 
   return (
     <Layout>
@@ -26,12 +29,12 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
           <span className={styles.txtLogo}>EleveNerd</span>
         </div>
         <Badge
-          count={mockCartItems.reduce((acc, item) => acc + item.quantity, 0)}
+          count={cart.reduce((acc, item) => acc + item.amount, 0)}
           color="var(--color-secondary)"
           size="default"
         >
           <ShoppingCartOutlined
-            onClick={() => setIsShoppingCartOpen(true)}
+            onClick={toggleShoppingCart}
             className={styles.shoppingCart}
           />
         </Badge>
@@ -76,7 +79,7 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
       <ShoppingCart
         isModalOpen={isShoppingCartOpen}
         handleOk={() => console.log("ok, confirmei compra")}
-        handleCancel={() => setIsShoppingCartOpen(false)}
+        handleCancel={toggleShoppingCart}
       />
     </Layout>
   );

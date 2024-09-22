@@ -1,14 +1,16 @@
 import { Button, Col, Row } from "antd";
 import styles from "./home.module.css";
-import { stock } from "../../utils/stock/stock.ts";
-import { StockItem } from "../../utils/stock/types.ts";
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { useCart } from "../../hooks/useCart.tsx";
+import { FormattedItemsToShowItem } from "../../utils/stock/types.ts";
+import { formattedItemsToShow } from "../../utils/stock/stock.ts";
 
 export const Home: React.FC = () => {
+  const { cart, addToCart } = useCart();
   return (
     <div className={styles.wrapperContent}>
       <Row gutter={[16, 16]} className={styles.wrapperAllItems}>
-        {stock.map((item: StockItem) => (
+        {formattedItemsToShow().map((item: FormattedItemsToShowItem) => (
           <Col key={item.id} xs={24} sm={12} md={12} lg={8} xl={8}>
             <div className={styles.wrapperItem}>
               <img
@@ -29,7 +31,10 @@ export const Home: React.FC = () => {
                 <p className={styles.price}>R$ {item.price}</p>
                 <p className={styles.divisor}> | </p>
                 <p className={styles.stockQuantity}>
-                  Estoque: {item.stockQuantity}
+                  Estoque:{" "}
+                  {item.amountAvailable -
+                    (cart.find((cartItem) => cartItem.id === item.id)?.amount ??
+                      0)}
                 </p>
               </div>
 
@@ -38,6 +43,7 @@ export const Home: React.FC = () => {
                 className={styles.addButton}
                 icon={<ShoppingCartOutlined />}
                 size="large"
+                onClick={() => addToCart(item)}
               >
                 Adicionar ao carrinho
               </Button>

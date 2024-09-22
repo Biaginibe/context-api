@@ -9,9 +9,8 @@ export const mockCartItems: CartItem[] = [
       "Detecta campos eletromagnéticos, essencial para a caça de fantasmas.",
     price: 49.99,
     image: images.emf,
-    stockQuantity: 15,
     category: "Equipamento",
-    quantity: 1,
+    amount: 1,
   },
   {
     id: 3,
@@ -19,10 +18,9 @@ export const mockCartItems: CartItem[] = [
     description:
       "Mede quedas de temperatura, indicando possível presença de fantasmas.",
     price: 59.99,
-    stockQuantity: 8,
     image: images.termometro,
     category: "Equipamento",
-    quantity: 1,
+    amount: 1,
   },
   {
     id: 4,
@@ -30,10 +28,9 @@ export const mockCartItems: CartItem[] = [
     description:
       "Dispositivo portátil para capturar fantasmas após a detecção.",
     price: 129.99,
-    stockQuantity: 5,
     image: images.ghostTrap,
     category: "Ferramentas",
-    quantity: 2,
+    amount: 2,
   },
   {
     id: 6,
@@ -41,10 +38,9 @@ export const mockCartItems: CartItem[] = [
     description:
       "Câmera projetada para gravação em ambientes com pouca luz durante investigações.",
     price: 249.99,
-    stockQuantity: 3,
     image: images.camera,
     category: "Equipamento",
-    quantity: 3,
+    amount: 3,
   },
   {
     id: 7,
@@ -52,9 +48,8 @@ export const mockCartItems: CartItem[] = [
     description:
       "Sal usado para afastar fantasmas ou criar barreiras de proteção.",
     price: 5.99,
-    stockQuantity: 100,
     image: images.salt,
     category: "Proteção",
-    quantity: 4,
+    amount: 4,
   },
 ];

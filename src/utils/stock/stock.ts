@@ -1,7 +1,58 @@
 import { images } from "../../assets/images/index.ts";
-import { StockItem } from "./types.ts";
+import { FormattedItemsToShowItem, Product, StockItem } from "./types.ts";
+
+export const findStockItemById = (id: number) => {
+  return stock.find((item) => item.id === id);
+};
 
 export const stock: StockItem[] = [
+  {
+    id: 1,
+    amountAvailable: 15,
+  },
+  {
+    id: 2,
+
+    amountAvailable: 10,
+  },
+  {
+    id: 3,
+
+    amountAvailable: 8,
+  },
+  {
+    id: 4,
+
+    amountAvailable: 5,
+  },
+  {
+    id: 5,
+
+    amountAvailable: 50,
+  },
+  {
+    id: 6,
+
+    amountAvailable: 3,
+  },
+  {
+    id: 7,
+
+    amountAvailable: 100,
+  },
+  {
+    id: 8,
+
+    amountAvailable: 12,
+  },
+  {
+    id: 9,
+
+    amountAvailable: 7,
+  },
+];
+
+const products: Product[] = [
   {
     id: 1,
     name: "Detector EMF",
@@ -9,7 +60,6 @@ export const stock: StockItem[] = [
       "Detecta campos eletromagnéticos, essencial para a caça de fantasmas.",
     price: 49.99,
     image: images.emf,
-    stockQuantity: 15,
     category: "Equipamento",
   },
   {
@@ -18,7 +68,6 @@ export const stock: StockItem[] = [
     description:
       "Dispositivo que varre frequências de rádio para permitir comunicação com espíritos.",
     price: 79.99,
-    stockQuantity: 10,
     image: images.spiritBox,
     category: "Equipamento",
   },
@@ -28,7 +77,6 @@ export const stock: StockItem[] = [
     description:
       "Mede quedas de temperatura, indicando possível presença de fantasmas.",
     price: 59.99,
-    stockQuantity: 8,
     image: images.termometro,
     category: "Equipamento",
   },
@@ -38,7 +86,6 @@ export const stock: StockItem[] = [
     description:
       "Dispositivo portátil para capturar fantasmas após a detecção.",
     price: 129.99,
-    stockQuantity: 5,
     image: images.ghostTrap,
     category: "Ferramentas",
   },
@@ -48,7 +95,6 @@ export const stock: StockItem[] = [
     description:
       "Usado para registrar avistamentos de fantasmas e evidências durante investigações.",
     price: 12.99,
-    stockQuantity: 50,
     image: images.ghostDiary,
     category: "Acessórios",
   },
@@ -58,7 +104,6 @@ export const stock: StockItem[] = [
     description:
       "Câmera projetada para gravação em ambientes com pouca luz durante investigações.",
     price: 249.99,
-    stockQuantity: 3,
     image: images.camera,
     category: "Equipamento",
   },
@@ -68,7 +113,6 @@ export const stock: StockItem[] = [
     description:
       "Sal usado para afastar fantasmas ou criar barreiras de proteção.",
     price: 5.99,
-    stockQuantity: 100,
     image: images.salt,
     category: "Proteção",
   },
@@ -78,7 +122,6 @@ export const stock: StockItem[] = [
     description:
       "Revela impressões digitais fantasmagóricas e outras marcas espectrais.",
     price: 34.99,
-    stockQuantity: 12,
     image: images.flashlight,
     category: "Ferramentas",
   },
@@ -87,8 +130,18 @@ export const stock: StockItem[] = [
     name: "Amuleto de Proteção",
     description: "Usado para proteger contra ataques de fantasmas.",
     price: 89.99,
-    stockQuantity: 7,
     image: images.protectionAmule,
     category: "Proteção",
   },
 ];
+
+export const formattedItemsToShow: () => FormattedItemsToShowItem[] = () => {
+  const formattedItemsToShow: FormattedItemsToShowItem[] = products.map(
+    (product) => {
+      const stockItem = findStockItemById(product.id);
+      return { ...product, amountAvailable: stockItem?.amountAvailable ?? 0 };
+    }
+  );
+
+  return formattedItemsToShow;
+};

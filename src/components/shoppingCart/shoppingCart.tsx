@@ -2,7 +2,7 @@ import { Modal } from "antd";
 import "./customModal.css";
 import styles from "./shoppingCart.module.css";
 import { CartItem } from "../../utils/stock/types.ts";
-import { mockCartItems } from "../../utils/stock/mockCartItems.ts";
+import { useCart } from "../../hooks/useCart.tsx";
 
 type ShoppingCartProps = {
   isModalOpen: boolean;
@@ -11,9 +11,10 @@ type ShoppingCartProps = {
 };
 
 const ListItems: React.FC = () => {
+  const { cart, addToCart, removeFromCart } = useCart();
   return (
     <div className={styles.wrapperList}>
-      {mockCartItems.map((item: CartItem) => (
+      {cart.map((item: CartItem) => (
         <div key={item.id} className={styles.wrapperListItem}>
           <img src={item.image} alt={item.name} className={styles.image} />
           <div className={styles.wrapperText}>
@@ -21,16 +22,25 @@ const ListItems: React.FC = () => {
             <div className={styles.description}>{item.description}</div>
           </div>
           <div className={styles.wrapperQuantity}>
-            <button className={styles.button}>-</button>
-            <div className={styles.quantity}>{item.quantity}</div>
-            <button className={styles.button}>+</button>
+            <button
+              className={styles.button}
+              onClick={() => removeFromCart(item)}
+            >
+              -
+            </button>
+            <div className={styles.quantity}>{item.amount}</div>
+            <button className={styles.button} onClick={() => addToCart(item)}>
+              +
+            </button>
           </div>
           <div className={styles.price}>R$ {item.price}</div>
         </div>
       ))}
       <div className={styles.totalPrice}>
         Total: R${" "}
-        {mockCartItems.reduce((acc, item) => acc + item.price, 0).toFixed(2)}
+        {cart
+          .reduce((acc, item) => acc + item.price * item.amount, 0)
+          .toFixed(2)}
       </div>
     </div>
   );
@@ -41,6 +51,8 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({
   handleOk,
   handleCancel,
 }) => {
+  const { clearCart } = useCart();
+
   return (
     <Modal
       width="70%"
@@ -75,8 +87,12 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({
           fontWeight: "bold",
         },
         size: "large",
+        onClick: () => {
+          clearCart();
+          handleCancel();
+        },
       }}
-      cancelText="Continuar comprando"
+      cancelText="Limpar carrinho"
     >
       <ListItems />
     </Modal>
