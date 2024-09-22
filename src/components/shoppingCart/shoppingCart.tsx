@@ -51,7 +51,9 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({
   handleOk,
   handleCancel,
 }) => {
-  const { clearCart } = useCart();
+  const { cart, clearCart } = useCart();
+
+  console.log(cart.length);
 
   return (
     <Modal
@@ -67,26 +69,33 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({
       className="custom-modal"
       style={{
         backdropFilter: "blur(5px)",
-        color: "#ffffff", // texto branco,
+        color: "#ffffff",
       }}
       okButtonProps={{
         style: {
-          backgroundColor: "var(--color-secondary)", // botão 'OK' com cor rosa
+          backgroundColor:
+            cart.length > 0 ? "var(--color-secondary)" : "var(--color-gray-1)",
           border: "none",
           color: "#ffffff",
           fontWeight: "bold",
         },
         size: "large",
+        disabled: cart.length == 0,
       }}
       okText="Finalizar compra"
       cancelButtonProps={{
         style: {
-          backgroundColor: "transparent", // botão 'Cancel' com cor azul
-          border: "1px solid var(--color-secondary)",
-          color: "var(--color-secondary)",
+          backgroundColor: "transparent",
+          border:
+            cart.length > 0
+              ? "1px solid var(--color-secondary)"
+              : "1px solid var(--color-gray-1)",
+          color:
+            cart.length > 0 ? "var(--color-secondary)" : "var(--color-gray-1)",
           fontWeight: "bold",
         },
         size: "large",
+        disabled: cart.length == 0,
         onClick: () => {
           clearCart();
           handleCancel();

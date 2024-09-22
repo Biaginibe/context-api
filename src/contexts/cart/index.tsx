@@ -8,6 +8,7 @@ import {
 } from "react";
 import { CartItem, FormattedItemsToShowItem } from "../../utils/stock/types.ts";
 import { findStockItemById } from "../../utils/stock/stock.ts";
+import { toast } from "react-toastify";
 
 export type CartContextValue = {
   cart: CartItem[];
@@ -64,6 +65,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (amount > stockAmount) {
           console.error("Quantidade solicitada fora de estoque");
+          toast.error("Quantidade solicitada fora de estoque");
           return prevCart;
         }
 
@@ -92,6 +94,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (!alreadyExists) {
           console.error("Item não encontrado no carrinho");
+          toast.error("Item não encontrado no carrinho");
           return prevCart;
         }
 

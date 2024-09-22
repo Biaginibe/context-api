@@ -9,6 +9,7 @@ import { Logo2 } from "../../assets/illustrations.tsx";
 import { ShoppingCart } from "../shoppingCart/shoppingCart.tsx";
 import { useState } from "react";
 import { useCart } from "../../hooks/useCart.tsx";
+import { toast } from "react-toastify";
 
 const { Header, Content, Footer } = Layout;
 
@@ -16,7 +17,7 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
   const [isShoppingCartOpen, setIsShoppingCartOpen] = useState<boolean>(false);
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
 
   const toggleShoppingCart = () => setIsShoppingCartOpen(!isShoppingCartOpen);
 
@@ -78,7 +79,11 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
       </Footer>
       <ShoppingCart
         isModalOpen={isShoppingCartOpen}
-        handleOk={() => console.log("ok, confirmei compra")}
+        handleOk={() => {
+          toast.success("Compra realizada com sucesso!");
+          clearCart();
+          toggleShoppingCart();
+        }}
         handleCancel={toggleShoppingCart}
       />
     </Layout>
