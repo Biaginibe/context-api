@@ -5,6 +5,10 @@
   height: var(--size-header);
   width: 100%;
   background-color: var(--color-primary);
+
+  @media (max-width: 600px) {
+    padding: 0px 24px;
+  }
 }
 
 .wrapperLogo {
@@ -15,9 +19,25 @@
 
 .logo {
   width: 150px;
+
+  @media (max-width: 600px) {
+    width: 100px;
+    margin-right: 8px;
+  }
 }
 
 .txtLogo {
+  color: var(--color-secondary);
+  font-size: 40px;
+  line-height: 32px;
+  margin-bottom: 4px;
+  font-family: "Handjet", sans-serif;
+  font-weight: 600;
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+.txtLogo2 {
   color: var(--color-secondary);
   font-size: 40px;
   line-height: 32px;
@@ -30,6 +50,7 @@
   color: var(--color-white);
   font-size: 2rem;
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 .wrapperContent {
@@ -54,6 +75,11 @@
   justify-content: space-between;
   align-items: center;
   height: var(--size-footer);
+
+  @media (max-width: 600px) {
+    height: calc(var(--size-footer) * 1.5);
+    padding-inline: 24px;
+  }
 }
 
 .wrapperSocialMedia {

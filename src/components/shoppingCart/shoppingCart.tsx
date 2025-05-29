@@ -33,7 +33,7 @@ const ListItems: React.FC = () => {
               +
             </button>
           </div>
-          <div className={styles.price}>R$ {item.price}</div>
+          <div className={styles.price}>R$ {item.price * item.amount}</div>
         </div>
       ))}
       <div className={styles.totalPrice}>

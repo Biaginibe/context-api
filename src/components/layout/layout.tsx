@@ -27,7 +27,7 @@ export const ProjectLayout: React.FC<{ children?: React.ReactNode }> = ({
         <div className={styles.wrapperLogo}>
           <span className={styles.txtLogo}>EleveNerd</span>
           <Logo2 className={styles.logo} />
-          <span className={styles.txtLogo}>EleveNerd</span>
+          <span className={styles.txtLogo2}>EleveNerd</span>
         </div>
         <Badge
           count={cart.reduce((acc, item) => acc + item.amount, 0)}
